@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  db:
+    image: mongo:latest
+    restart: always
+    volumes: 
+     - /home/ghostuser/development/spa/docker/data/:/data/db
+     - /home/ghostuser/development/spa/docker/mongod.conf:/etc/mongo/mongod.conf
+    ports: 
+     - 27017:27017
+    environment:
+       MONGO_INITDB_ROOT_USERNAME: root
+       MONGO_INITDB_ROOT_PASSWORD: root
+       MONGO_INITDB_DATABASE: admin
+    entrypoint: ["mongod", "--bind_ip_all", "--config", "/etc/mongo/mongod.conf"]
+
