@@ -10,39 +10,17 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-obsession'
   Plug 'Yggdroot/indentLine'
   Plug 'arcticicestudio/nord-vim'
-  "Plug 'sainnhe/everforest'
-  "Plug 'dhruvasagar/vim-table-mode' 
-  "Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-  "Plug 'glepnir/oceanic-material'
+  Plug 'preservim/tagbar'
   Plug 'sheerun/vim-polyglot'
-  Plug 'morhetz/gruvbox'
+  Plug 'joshdick/onedark.vim'
+  Plug 'junegunn/rainbow_parentheses.vim'
   "Plug 'nekonako/xresources-nvim'
   call plug#end()
 let g:coc_global_extensions = ['coc-emmet', 'coc-prettier', 'coc-sh', 'coc-go', 'coc-clangd', 'coc-tsserver', 'coc-css', 'coc-tsserver', 'coc-vetur']
-
-
-"STATUSLINE
-set statusline+=%1*\ \ \ [\ %{ObsessionStatus()}\ ]\ \ \ 
-set statusline+=%1*\ \ \ \ \ \ [\ %f\ ]\ \ 
-set statusline+=%=
-set statusline+=%1*\ \ \ %y\ \ \ 
-set statusline+=%1*\ \ \ [\ %l,%c\ ]\ \ \ 
-set statusline+=%1*\ \ \ [\ %p%%\ ]\ \ \ 
-"set statusline+=%\m 
-
-augroup statusline
-    autocmd!
-    autocmd VimEnter,ColorScheme * hi User1 guifg=#C0B18B guibg=#151515
-    autocmd VimEnter,ColorScheme * hi User2 guifg=#C0B18B guibg=#151515
-augroup END
-
-
 "FOLDING 
 set foldnestmax=1
-"au BufReadPre *.go setlocal foldmethod=syntax
 au BufReadPre *.css setlocal foldmethod=syntax
-"au BufReadPre *.js setlocal foldmethod=indent
-"au BufReadPre *.sh setlocal foldmethod=indent
+
 
 nnoremap <leader>fm :set foldmethod=manual<CR>
 nnoremap <leader>fs :set foldmethod=syntax<CR>
@@ -50,12 +28,19 @@ nnoremap <leader>fi :set foldmethod=indent<CR>
 
 "MISC
 "set guicursor=v-c-sm:block,n-i-ci-ve:ver25,r-cr-o:hor20
-nnoremap <leader>s :source ~/personal/userFiles/conf/nvim/init.vim<CR>
+nnoremap <leader>s :source ~/confs/nvim/init.vim<CR>
 autocmd VimEnter * hi CursorLine ctermbg=blue  guibg=#262526
 set cursorline
 
 
 
+
+"RainbowParentheses
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+au VimEnter * RainbowParentheses
+"CTAGS *needs ctags*
+nmap <leader>tt :TagbarToggle<CR>
 
 "set cursorcolumn
 set shiftwidth=2
@@ -120,17 +105,69 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"TAB LINE
-"set list lcs=tab:\.\ 
-
-
-"COLORSCHEME
-
-let g:gruvbox_contrast_dark='dark'
+"CS
 autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
-"colorscheme gruvbox
-colorscheme nord
-set background=dark
-let g:everforest_better_performance = 1
+colorscheme onedark
 
-"lua require('init_')
+"TabLine
+set showtabline=2
+
+function TabLine()
+ let cc = '%#Search#'
+ let sc = '%#DiffDelete#'
+ let sc2 = '%#ErrorMsg#'
+ let nsc = '%#WildMenu#'
+ let nsc2 = '%#Directory#'
+ let s:nc = "%#Normal#"
+
+
+ let s = ''
+	  for i in range(tabpagenr('$'))
+	    if i + 1 == tabpagenr()
+      "Selected
+	      let s ..= l:sc.'%#TabLineSel#'
+        let s ..= l:sc.' %a' .. (i + 1) .. ''.l:sc.' ' "Page Number
+	      let s ..= l:sc.' %{Label(' .. (i + 1) .. ')} '.l:sc2.'' "Label
+
+	    else
+      "Non Selected
+        let s ..= s:nc.' %{Label(' .. (i + 1) .. ')}  ' "Label
+	    endif
+	  endfor
+	 	let s ..= '%#TabLineFill#%T' "Fill
+    
+	  if tabpagenr('$') > 1
+	    let s ..= '%=%#TabLine#%999X'.l:cc.''.l:cc.' [ x ] ' "Close
+	  endif
+
+    return s
+endfunction
+
+function Label(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  return bufname(buflist[winnr - 1])
+endfunction
+set tabline=%!TabLine()
+
+"StausBar
+""""
+function StatusBar()
+  let pc = '%#DiffDelete#'
+  let pc2 = '%#ErrorMsg#'
+
+  let sc = '%#WildMenu#'
+  let sc2 = '%#Directory#'
+
+  let cc = '%#LineNr#'
+  let &statusline=
+        \ l:pc.' [ %{ObsessionStatus()} ] '.l:pc2.''
+        \.l:sc.'  %f  '.l:sc.l:sc2.''
+        \'%='
+        \.l:sc2.''.l:sc.' %y '.l:sc.''
+        \.l:pc2.''.l:pc.' [ %l,%c ] '
+        \.l:pc.' [ %p%%  ] '
+endfunction
+call StatusBar()
+
+
