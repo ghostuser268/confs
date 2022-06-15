@@ -9,6 +9,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'tpope/vim-obsession'
   Plug 'Yggdroot/indentLine'
+  Plug 'arcticicestudio/nord-vim'
   "Plug 'sainnhe/everforest'
   "Plug 'dhruvasagar/vim-table-mode' 
   "Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
@@ -17,7 +18,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'morhetz/gruvbox'
   "Plug 'nekonako/xresources-nvim'
   call plug#end()
-let g:coc_global_extensions = ['coc-emmet', 'coc-prettier', 'coc-sh', 'coc-go', 'coc-clangd', 'coc-tsserver', 'coc-css', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-emmet', 'coc-prettier', 'coc-sh', 'coc-go', 'coc-clangd', 'coc-tsserver', 'coc-css', 'coc-tsserver', 'coc-vetur']
 
 
 "STATUSLINE
@@ -127,8 +128,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 let g:gruvbox_contrast_dark='dark'
 autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
-colorscheme gruvbox
-
+"colorscheme gruvbox
+colorscheme nord
 set background=dark
 let g:everforest_better_performance = 1
 

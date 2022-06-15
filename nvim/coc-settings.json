@@ -1,4 +1,5 @@
 {
+  //PRETTIER
   "coc.preferences.formatOnSaveFiletypes": [
     "html",
     "c",
@@ -9,9 +10,16 @@
     "javascript",
     "vue"
   ],
+
+  //HTML
   "html.autoClosingTags": true,
+
+  //C/C++
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
+  //GO
   "go.goplsOptions": {
     "completeUnimported": true
-  }
+  },
+  //VUE
+  "vetur.ignoreProjectWarning":false,
 }
