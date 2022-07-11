@@ -1,5 +1,3 @@
-set nocompatible
-let g:polyglot_disabled = ['markdown']
 call plug#begin('~/.vim/plugged')
   Plug 'junegunn/fzf', { 'do': 'yes \| ./install' }
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -9,16 +7,22 @@ call plug#begin('~/.vim/plugged')
   Plug 'ryanoasis/vim-devicons'
   Plug 'tpope/vim-obsession'
   Plug 'Yggdroot/indentLine'
-  Plug 'arcticicestudio/nord-vim'
   Plug 'preservim/tagbar'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'joshdick/onedark.vim'
   Plug 'junegunn/rainbow_parentheses.vim'
-  "Plug 'nekonako/xresources-nvim'
-  call plug#end()
-let g:coc_global_extensions = ['coc-emmet', 'coc-prettier', 'coc-sh', 'coc-go', 'coc-clangd', 'coc-tsserver', 'coc-css', 'coc-tsserver', 'coc-vetur']
-"FOLDING 
+  Plug 'norcalli/nvim-colorizer.lua'
+  Plug 'rust-lang/rust.vim'
+  Plug 'wesleimp/stylua.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'morhetz/gruvbox'
+  Plug 'maxmellon/vim-jsx-pretty'
+call plug#end()
+ 
+filetype plugin indent on
 set foldnestmax=1
+
+
+let g:coc_global_extensions = ['coc-lua', 'coc-emmet', 'coc-prettier', 'coc-sh', 'coc-go', 'coc-clangd', 'coc-tsserver', 'coc-css', 'coc-tsserver', 'coc-rls', 'coc-json']
+"FOLDING 
 au BufReadPre *.css setlocal foldmethod=syntax
 
 
@@ -27,18 +31,17 @@ nnoremap <leader>fs :set foldmethod=syntax<CR>
 nnoremap <leader>fi :set foldmethod=indent<CR>
 
 "MISC
-"set guicursor=v-c-sm:block,n-i-ci-ve:ver25,r-cr-o:hor20
 nnoremap <leader>s :source ~/confs/nvim/init.vim<CR>
 autocmd VimEnter * hi CursorLine ctermbg=blue  guibg=#262526
 set cursorline
 
 
 
-
+let g:rust_cargo_check_all_features = 1
 "RainbowParentheses
 let g:rainbow#max_level = 16
 let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-au VimEnter * RainbowParentheses
+"au VimEnter * RainbowParentheses
 "CTAGS *needs ctags*
 nmap <leader>tt :TagbarToggle<CR>
 
@@ -50,7 +53,11 @@ set nu
 set relativenumber
 au BufWinEnter * syntax on
 set termguicolors
-
+set showtabline=2
+set noshowmode
+set noruler
+set laststatus=0
+set noshowcmd
 
 "COPY
 vmap <C-c> "+y
@@ -105,42 +112,41 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-"CS
-autocmd VimEnter * hi Normal ctermbg=NONE guibg=NONE
-colorscheme onedark
 
-"TabLine
-set showtabline=2
+
+"COLORSCHEME
+"colorscheme base-16
+
+colorscheme gruvbox
+highlight Normal ctermbg=NONE guibg=NONE
+highlight LineNr ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
+
+
+
 
 function TabLine()
- let cc = '%#Search#'
- let sc = '%#DiffDelete#'
- let sc2 = '%#ErrorMsg#'
- let nsc = '%#WildMenu#'
- let nsc2 = '%#Directory#'
- let s:nc = "%#Normal#"
+  hi ts_bg1 guibg=#68A8E4  guifg=#1C1B19 
+  hi ts_fg1 guibg=#1C1B19  guifg=#68A8E4
+  hi ts_bg2 guibg=#BC9D66  guifg=#1C1B19
+  hi ts_fg2 guibg=#1C1B19  guifg=#BC9D66
+  let s=''
+  for i in range(tabpagenr('$'))
+    if i + 1 == tabpagenr()
+    ""Selected
+      let s ..= '%#ts_bg1#'
+      let s ..= ' %a' .. (i + 1) .. '  '.ObsessionStatus().' '
+      let s ..= '%{Label(' .. (i + 1) .. ')} '.'%#ts_fg1#' 
+    else
+      let s ..= '%#ts_bg2# %{Label(' .. (i + 1) .. ')} '.'%#ts_fg2#' 
+    endif
+  endfor
+  let s ..= '%#Normal#%=' "Fill
+  if tabpagenr('$') > 1
+    let s ..= '%=%999X%#ts_bg1# [ x ] '
 
-
- let s = ''
-	  for i in range(tabpagenr('$'))
-	    if i + 1 == tabpagenr()
-      "Selected
-	      let s ..= l:sc.'%#TabLineSel#'
-        let s ..= l:sc.' %a' .. (i + 1) .. ''.l:sc.' ' "Page Number
-	      let s ..= l:sc.' %{Label(' .. (i + 1) .. ')} '.l:sc2.'' "Label
-
-	    else
-      "Non Selected
-        let s ..= s:nc.' %{Label(' .. (i + 1) .. ')}  ' "Label
-	    endif
-	  endfor
-	 	let s ..= '%#TabLineFill#%T' "Fill
-    
-	  if tabpagenr('$') > 1
-	    let s ..= '%=%#TabLine#%999X'.l:cc.''.l:cc.' [ x ] ' "Close
-	  endif
-
-    return s
+  endif
+  return s
 endfunction
 
 function Label(n)
@@ -150,24 +156,6 @@ function Label(n)
 endfunction
 set tabline=%!TabLine()
 
-"StausBar
-""""
-function StatusBar()
-  let pc = '%#DiffDelete#'
-  let pc2 = '%#ErrorMsg#'
 
-  let sc = '%#WildMenu#'
-  let sc2 = '%#Directory#'
-
-  let cc = '%#LineNr#'
-  let &statusline=
-        \ l:pc.' [ %{ObsessionStatus()} ] '.l:pc2.''
-        \.l:sc.'  %f  '.l:sc.l:sc2.''
-        \'%='
-        \.l:sc2.''.l:sc.' %y '.l:sc.''
-        \.l:pc2.''.l:pc.' [ %l,%c ] '
-        \.l:pc.' [ %p%%  ] '
-endfunction
-call StatusBar()
-
+"lua require('config')
 

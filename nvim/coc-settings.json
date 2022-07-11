@@ -1,25 +1,20 @@
 {
-  //PRETTIER
   "coc.preferences.formatOnSaveFiletypes": [
+    "rust",
     "html",
     "c",
     "h",
     "go",
     "cpp",
     "css",
-    "javascript",
-    "vue"
+    "javascript"
   ],
 
-  //HTML
   "html.autoClosingTags": true,
 
-  //C/C++
   "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
-  //GO
   "go.goplsOptions": {
     "completeUnimported": true
   },
-  //VUE
-  "vetur.ignoreProjectWarning":false,
+  "vetur.ignoreProjectWarning":false
 }
