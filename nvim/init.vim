@@ -15,6 +15,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'morhetz/gruvbox'
   Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'sainnhe/everforest'
 call plug#end()
  
 filetype plugin indent on
@@ -116,8 +117,9 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 "COLORSCHEME
 "colorscheme base-16
-
-colorscheme gruvbox
+let g:everforest_transparent_background = "1"
+let g:everforest_background = 'hard'
+colorscheme everforest
 highlight Normal ctermbg=NONE guibg=NONE
 highlight LineNr ctermbg=NONE guibg=NONE
 highlight SignColumn ctermbg=NONE guibg=NONE
