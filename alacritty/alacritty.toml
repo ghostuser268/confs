@@ -1,0 +1,70 @@
+[colors.primary]
+background = '#181616'
+foreground = '#c5c9c5'
+
+# Normal colors
+[colors.normal]
+black=   '#0d0c0c'
+red=     '#c4746e'
+green=   '#8a9a7b'
+yellow=  '#c4b28a'
+blue=    '#8ba4b0'
+magenta= '#a292a3'
+cyan=    '#8ea4a2'
+white=   '#C8C093'
+
+[ colors.selection ]
+background= '#2D4F67'
+foreground= '#C8C093'
+
+
+# Bright colors
+[colors.bright]
+black = '#5b5858'
+red = '#ec6a88'
+green = '#3fdaa4'
+yellow = '#fbc3a7'
+blue = '#3fc4de'
+magenta = '#f075b5'
+cyan = '#6be4e6'
+white = '#d5d8da'
+
+[font]
+normal = {family = "iosevka", style  = "Regular"}
+#normal = {family = " FiraCode Nerd Font", style  = "Regular"}
+size = 10
+
+[env]
+term = "xterm-256color"
+
+[shell]
+program = "/bin/bash"
+
+[window]
+opacity = 0.95
+blur = true
+decorations_theme_variant = "Dark"
+
+[window.padding]
+x = 15
+y = 15
+
+[keyboard]
+bindings = [
+
+#Resizing
+{key = "Backspace", mods = "Control|Shift", action = "ResetFontSize"},
+{key = "Plus", mods = "Control|Shift", action = "IncreaseFontSize"},
+{key = "Minus", mods = "Control|Shift", action = "DecreaseFontSize"},
+
+#Scrolling
+{key = "PageUp", mods = "Control|Shift", action = "ScrollPageUp"},
+{key = "PageDown", mods = "Control|Shift", action = "ScrollPageDown"},
+
+{key = "Enter", mods = "Control|Shift", action = "CreateNewWindow"},
+
+
+
+
+
+]

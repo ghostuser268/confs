@@ -1,0 +1,18 @@
+{
+	"coc.preferences.formatOnSaveFiletypes": [
+		"rust",
+		"lua",
+		"js",
+		"toml",
+		"js",
+		"dart",
+		"json",
+		"html",
+		"c",
+		"h",
+		"cpp",
+		"css",
+	],
+	"Lua.telemetry.enable": false,
+	"suggest.timeout": 5000
+}
