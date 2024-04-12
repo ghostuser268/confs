@@ -1,24 +1,58 @@
 vim.cmd [[packadd packer.nvim]]
 
+
+
 return require('packer').startup(function(use)
 	use { 'wbthomason/packer.nvim' }
+	use { "stevearc/dressing.nvim" }
+	--MASON
+	use {
+		"williamboman/mason.nvim",
+		config = "require('plugins.confs.mason')"
+	}
+	use {
+		"williamboman/mason-lspconfig.nvim",
+	}
+	use {
+		"neovim/nvim-lspconfig",
+	}
+
+	use 'hrsh7th/cmp-nvim-lsp'
+	use 'hrsh7th/cmp-buffer'
+	use 'hrsh7th/cmp-path'
+	use 'hrsh7th/cmp-cmdline'
+	use {
+		"hrsh7th/nvim-cmp",
+		config = "require('plugins.confs.cmp')"
+
+	}
+	use 'AlexvZyl/nordic.nvim'
+	use 'hrsh7th/cmp-vsnip'
+	use 'hrsh7th/vim-vsnip'
+	use({
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup({
+
+				format_on_save = {
+					-- These options will be passed to conform.format()
+					timeout_ms = 500,
+					lsp_fallback = true,
+				},
+
+				formatters_by_ft = {
+					sh = { "shellharden", "beautysh $FILENAME" },
+				},
+			})
+		end,
+	})
+
 	use { 'tpope/vim-surround' }
 	use { 'jiangmiao/auto-pairs' }
 	use { 'preservim/nerdcommenter' }
 	use { 'ayu-theme/ayu-vim' }
-
-	use { "rebelot/kanagawa.nvim" }
 	use { 'sainnhe/gruvbox-material' }
-	use { "akinsho/horizon.nvim", tag = "*",
-		config = "require('plugins.confs.horizon')"
-	}
-	--use({
-	--"neanias/everforest-nvim",
-	---- Optional; default configuration will be used if setup isn't called.
-	--config = function()
-	--require("everforest").setup()
-	--end,
-	--})
+	use "nanotech/jellybeans.vim"
 	use { "lukas-reineke/indent-blankline.nvim",
 		config = "require('plugins.confs.indentlines')",
 	}
@@ -40,16 +74,11 @@ return require('packer').startup(function(use)
 			}
 		end
 	}
-	use { 'neoclide/coc.nvim', branch = 'release' }
-	use {
-		"nvim-tree/nvim-web-devicons",
-		event = "BufWinEnter",
-		config = "require('plugins.confs.devicons')",
-		module = "nvim-web-devicons"
-	}
+	use "nyoom-engineering/oxocarbon.nvim"
+	use "marko-cerovac/material.nvim"
 	use {
 		'nvim-lualine/lualine.nvim',
-		requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+		--requires = { 'nvim-tree/nvim-web-devicons', opt = true },
 		config = "require('plugins.confs.lualine')"
 
 	}
@@ -61,11 +90,6 @@ return require('packer').startup(function(use)
 		config = "require('plugins.confs.bufferline')"
 	}
 	use "tiagovla/scope.nvim"
-	use {
-		'kyazdani42/nvim-tree.lua',
-		cmd = "NvimTreeToggle",
-		config = "require('plugins.confs.nvim-tree')"
-	}
 	use {
 		"akinsho/toggleterm.nvim",
 		config = "require('plugins.confs.toggleterm')",

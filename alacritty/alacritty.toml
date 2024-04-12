@@ -1,17 +1,17 @@
 [colors.primary]
-background = '#181616'
-foreground = '#c5c9c5'
+background= "#161616"
+foreground= "#ffffff"
 
 # Normal colors
 [colors.normal]
-black=   '#0d0c0c'
-red=     '#c4746e'
-green=   '#8a9a7b'
-yellow=  '#c4b28a'
-blue=    '#8ba4b0'
-magenta= '#a292a3'
-cyan=    '#8ea4a2'
-white=   '#C8C093'
+black= "#262626"
+magenta= "#ff7eb6"
+green= "#42be65"
+yellow= "#ffe97b"
+blue= "#33b1ff"
+red= "#ee5396"
+cyan= "#3ddbd9"
+white= "#dde1e6"
 
 [ colors.selection ]
 background= '#2D4F67'
@@ -41,7 +41,7 @@ term = "xterm-256color"
 program = "/bin/bash"
 
 [window]
-opacity = 0.95
+opacity = 1
 blur = true
 decorations_theme_variant = "Dark"
 

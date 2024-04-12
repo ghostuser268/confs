@@ -84,13 +84,15 @@
 			(geometry 
 				 :x "0%" 
 				 :y "1%" 
-				 :width "98%" 
+
+				 :width "50%" 
 				 :height "40px" 
-				 :anchor "bottom center") 
+				 :anchor "top center") 
+				 
 				 :stacking "fg" 
-				 :windowtype "dock" 
+				 ;;:windowtype "toolbar" 
 				 :exclusive true 
-				 :wm-ignore false 
+				 ;;:wm-ignore false 
 				 (bar))
 
 (defwidget  bar []

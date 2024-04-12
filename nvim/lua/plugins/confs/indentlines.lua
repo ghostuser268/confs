@@ -5,6 +5,6 @@ require("ibl").setup {
 		highlight = "Whitespace",
 		remove_blankline_trail = false,
 	},
-	scope = { enabled = true, show_start = false, },
+	scope = { enabled = false, show_start = false, },
 
 }
