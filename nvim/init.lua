@@ -73,5 +73,5 @@ vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=none guibg=none]]
 
 ---------------------------------COLORSCHEME
 set.background = "dark"
-vim.cmd("colorscheme jellybeans")
+vim.cmd("colorscheme everblush")
 vim.cmd('highlight Folded ctermbg=white guibg=none')
