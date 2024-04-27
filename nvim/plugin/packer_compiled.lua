@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/ghost/.cache/nvim/packer_hererocks/2.1.1702233742/share/lua/5.1/?.lua;/home/ghost/.cache/nvim/packer_hererocks/2.1.1702233742/share/lua/5.1/?/init.lua;/home/ghost/.cache/nvim/packer_hererocks/2.1.1702233742/lib/luarocks/rocks-5.1/?.lua;/home/ghost/.cache/nvim/packer_hererocks/2.1.1702233742/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/ghost/.cache/nvim/packer_hererocks/2.1.1702233742/lib/lua/5.1/?.so"
+local package_path_str = "/home/ghost/.cache/nvim/packer_hererocks/2.1.1713773202/share/lua/5.1/?.lua;/home/ghost/.cache/nvim/packer_hererocks/2.1.1713773202/share/lua/5.1/?/init.lua;/home/ghost/.cache/nvim/packer_hererocks/2.1.1713773202/lib/luarocks/rocks-5.1/?.lua;/home/ghost/.cache/nvim/packer_hererocks/2.1.1713773202/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/ghost/.cache/nvim/packer_hererocks/2.1.1713773202/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -92,6 +92,11 @@ _G.packer_plugins = {
     path = "/home/ghost/.local/share/nvim/site/pack/packer/opt/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  ["citruszest.nvim"] = {
+    loaded = true,
+    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/citruszest.nvim",
+    url = "https://github.com/zootedb0t/citruszest.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/ghost/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -118,15 +123,20 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/cmp-vsnip"
   },
   ["conform.nvim"] = {
-    config = { "\27LJ\2\n¼\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\21formatters_by_ft\ash\1\0\0\1\3\0\0\16shellharden\23beautysh $FILENAME\19format_on_save\1\0\0\1\0\2\15timeout_ms\3ô\3\17lsp_fallback\2\nsetup\fconform\frequire\0" },
+    config = { "\27LJ\2\nœ\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\21formatters_by_ft\1\0\1\21formatters_by_ft\0\ash\1\0\1\ash\0\1\3\0\0\16shellharden\23beautysh $FILENAME\nsetup\fconform\frequire\0" },
     loaded = true,
     path = "/home/ghost/.local/share/nvim/site/pack/packer/start/conform.nvim",
     url = "https://github.com/stevearc/conform.nvim"
   },
-  ["dressing.nvim"] = {
+  everblush = {
     loaded = true,
-    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/dressing.nvim",
-    url = "https://github.com/stevearc/dressing.nvim"
+    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/everblush",
+    url = "https://github.com/Everblush/nvim"
+  },
+  everforest = {
+    loaded = true,
+    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/everforest",
+    url = "https://github.com/sainnhe/everforest"
   },
   ["gruvbox-material"] = {
     loaded = true,
@@ -143,6 +153,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ghost/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
+  },
+  ["jellybeans.vim"] = {
+    loaded = true,
+    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/jellybeans.vim",
+    url = "https://github.com/nanotech/jellybeans.vim"
+  },
+  ["komau.vim"] = {
+    loaded = true,
+    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/komau.vim",
+    url = "https://github.com/ntk148v/komau.vim"
   },
   ["lualine.nvim"] = {
     config = { "require('plugins.confs.lualine')" },
@@ -161,10 +181,25 @@ _G.packer_plugins = {
     path = "/home/ghost/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["material.nvim"] = {
+    loaded = true,
+    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/material.nvim",
+    url = "https://github.com/marko-cerovac/material.nvim"
+  },
+  ["miasma.nvim"] = {
+    loaded = true,
+    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/miasma.nvim",
+    url = "https://github.com/xero/miasma.nvim"
+  },
   nerdcommenter = {
     loaded = true,
     path = "/home/ghost/.local/share/nvim/site/pack/packer/start/nerdcommenter",
     url = "https://github.com/preservim/nerdcommenter"
+  },
+  ["nordic.nvim"] = {
+    loaded = true,
+    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/nordic.nvim",
+    url = "https://github.com/AlexvZyl/nordic.nvim"
   },
   ["nvim-cmp"] = {
     config = { "require('plugins.confs.cmp')" },
@@ -197,6 +232,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ghost/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["oxocarbon.nvim"] = {
+    loaded = true,
+    path = "/home/ghost/.local/share/nvim/site/pack/packer/start/oxocarbon.nvim",
+    url = "https://github.com/nyoom-engineering/oxocarbon.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -279,41 +319,41 @@ if not vim.g.packer_custom_loader_enabled then
   vim.g.packer_custom_loader_enabled = true
 end
 
--- Config for: telescope-tabs
-time([[Config for telescope-tabs]], true)
-try_loadstring("\27LJ\2\nQ\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\17show_preview\2\nsetup\19telescope-tabs\frequire\0", "config", "telescope-tabs")
-time([[Config for telescope-tabs]], false)
--- Config for: nvim-cmp
-time([[Config for nvim-cmp]], true)
-require('plugins.confs.cmp')
-time([[Config for nvim-cmp]], false)
+-- Config for: telescope.nvim
+time([[Config for telescope.nvim]], true)
+require('plugins.confs.telescope')
+time([[Config for telescope.nvim]], false)
 -- Config for: indent-blankline.nvim
 time([[Config for indent-blankline.nvim]], true)
 require('plugins.confs.indentlines')
 time([[Config for indent-blankline.nvim]], false)
+-- Config for: telescope-tabs
+time([[Config for telescope-tabs]], true)
+try_loadstring("\27LJ\2\nQ\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\17show_preview\2\nsetup\19telescope-tabs\frequire\0", "config", "telescope-tabs")
+time([[Config for telescope-tabs]], false)
 -- Config for: mason.nvim
 time([[Config for mason.nvim]], true)
 require('plugins.confs.mason')
 time([[Config for mason.nvim]], false)
 -- Config for: conform.nvim
 time([[Config for conform.nvim]], true)
-try_loadstring("\27LJ\2\n¼\1\0\0\5\0\n\0\r6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\0025\3\a\0005\4\6\0=\4\b\3=\3\t\2B\0\2\1K\0\1\0\21formatters_by_ft\ash\1\0\0\1\3\0\0\16shellharden\23beautysh $FILENAME\19format_on_save\1\0\0\1\0\2\15timeout_ms\3ô\3\17lsp_fallback\2\nsetup\fconform\frequire\0", "config", "conform.nvim")
+try_loadstring("\27LJ\2\nœ\1\0\0\5\0\b\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\6\0005\3\4\0005\4\3\0=\4\5\3=\3\a\2B\0\2\1K\0\1\0\21formatters_by_ft\1\0\1\21formatters_by_ft\0\ash\1\0\1\ash\0\1\3\0\0\16shellharden\23beautysh $FILENAME\nsetup\fconform\frequire\0", "config", "conform.nvim")
 time([[Config for conform.nvim]], false)
 -- Config for: lualine.nvim
 time([[Config for lualine.nvim]], true)
 require('plugins.confs.lualine')
 time([[Config for lualine.nvim]], false)
--- Config for: telescope.nvim
-time([[Config for telescope.nvim]], true)
-require('plugins.confs.telescope')
-time([[Config for telescope.nvim]], false)
+-- Config for: nvim-cmp
+time([[Config for nvim-cmp]], true)
+require('plugins.confs.cmp')
+time([[Config for nvim-cmp]], false)
 vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'toggleterm.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au BufRead * ++once lua require("packer.load")({'nvim-treesitter'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au UIEnter * ++once lua require("packer.load")({'bufferline.nvim', 'nvim-colorizer.lua'}, { event = "UIEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au UIEnter * ++once lua require("packer.load")({'nvim-colorizer.lua', 'bufferline.nvim'}, { event = "UIEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'toggleterm.nvim'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

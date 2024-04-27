@@ -4,7 +4,7 @@
 local lualine = require('lualine')
 lualine.setup({
 	options = {
-		theme = 'modus-vivendi'
+		theme = 'gruvbox-material'
 	}
 })
 -- Bubbles config for lualine

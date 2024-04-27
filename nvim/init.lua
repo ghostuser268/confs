@@ -13,7 +13,7 @@ set.autoindent = true
 set.ruler = false
 set.showtabline = 2
 
-set.mouse = "a"
+			set.mouse = "a"
 set.swapfile = false
 
 set.number = true
@@ -57,12 +57,9 @@ map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 
 -- PLUGIN KEYMAPS
-map('n', '<C-b>', ':NvimTreeToggle<CR>', { noremap = true, silent = false })
 map('n', '<C-m>', ':Mason<CR>', { noremap = true, silent = false })
 map('n', '<leader>ft', ':lua require("telescope-tabs").list_tabs()<CR>', { noremap = true, silent = false })
 
----------------------------------STATUSLINE
-opt.statusline = "%!v:lua.require('staline').run()"
 ---------------------------------PLUGINS
 require("plugins")
 require("scope").setup()
@@ -73,5 +70,8 @@ vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=none guibg=none]]
 
 ---------------------------------COLORSCHEME
 set.background = "dark"
-vim.cmd("colorscheme everblush")
-vim.cmd('highlight Folded ctermbg=white guibg=none')
+vim.cmd("let g:gruvbox_material_background = 'hard'")
+vim.cmd("let g:gruvbox_material_better_performance = 1")
+
+vim.cmd("colorscheme paper")
+vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=none ]]

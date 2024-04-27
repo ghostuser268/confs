@@ -20,10 +20,10 @@ return require('packer').startup(function(use)
 		config = function()
 			require("conform").setup({
 
-				format_on_save = {
-					timeout_ms = 500,
-					lsp_fallback = true,
-				},
+				--format_on_save = {
+				--timeout_ms = 500,
+				--lsp_fallback = true,
+				--},
 
 				formatters_by_ft = {
 					sh = { "shellharden", "beautysh $FILENAME" },
@@ -100,6 +100,7 @@ return require('packer').startup(function(use)
 	}
 
 	--COLORSCHEMES
+	use 'yorickpeterse/vim-paper'
 	use { 'Everblush/nvim', as = 'everblush' }
 	use 'ayu-theme/ayu-vim'
 	use 'sainnhe/gruvbox-material'
@@ -108,4 +109,7 @@ return require('packer').startup(function(use)
 	use "nyoom-engineering/oxocarbon.nvim"
 	use "marko-cerovac/material.nvim"
 	use 'AlexvZyl/nordic.nvim'
+	use "xero/miasma.nvim"
+	use "zootedb0t/citruszest.nvim"
+	use "ntk148v/komau.vim"
 end)
